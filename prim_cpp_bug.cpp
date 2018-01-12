@@ -54,7 +54,7 @@ Rcpp::List prim_cpp(arma::mat x)
 		// obtain the subscript notation from index based on reduced dimensions ***
 		min_subnot = arma::ind2sub(arma::size(new_m.n_rows, new_m.n_cols),
                                         idxmin_geral);
-		// *** adapted from coatless
+		// *** adapted from @coatless
 		// https://stackoverflow.com/questions/48045895/how-to-find-the-index-of-the-minimum-value-between-two-specific-columns-of-a-mat                                    
 		
 		v = min_subnot.at(0);
@@ -64,12 +64,12 @@ Rcpp::List prim_cpp(arma::mat x)
 		from.at(i) = parent.at(min_subnot.at(1));
 		
 		// "deleting" the row for current vertex by setting maximum to all entries in this row
-		// in the new matrix
+		// now, in the new matrix
 		new_m.row(v).fill(max_value); //better than using loop
 	
 	}
 	/*
-	 * add 1 to the final vectors - preparing for R output
+	 * add 1 to the final vectors - preparing R output
 	*/
 	return Rcpp::List::create(
 	Rcpp::Named("dist",x),
